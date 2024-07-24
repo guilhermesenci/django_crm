@@ -82,3 +82,7 @@ liderDeSi/
   ![home](./misc/Captura%20de%20tela%202024-07-24%20172309.png)
   ![login](./misc/Captura%20de%20tela%202024-07-24%20172321.png)
   ![sign in](./misc/Captura%20de%20tela%202024-07-24%20172350.png)
+
+## Uso extra
+
+Acesse o painel administrativo do Django em `http://127.0.0.1:8000/admin/` e faça login com as credenciais do superusuário criado.

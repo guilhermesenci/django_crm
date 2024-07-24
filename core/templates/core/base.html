@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body class="flex-column justify-between">
+  <nav class="py-4 px-10 shadow-md flex justify-between">
+    <a href="/">Lider de Si</a>
+    <div>
+      {% if request.user.is_authenticated %}
+      <span>Olá, {{request.user}}</span>
+      <form method="post" action="{% url 'leads_list' %}">
+        {% csrf_token %}
+        <button type="submit">Lista de Leads</button>
+      </form>
+      <form method="post" action="{% url 'clients_list' %}">
+        {% csrf_token %}
+        <button type="submit">Lista de clientes</button>
+      </form>
+      <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+      </form>
+      {%else%}
+      <a href="{% url 'login' %}">Entrar</a>
+      {% endif %}
+
+    </div>
+  </nav>
+
+  {% if messages %}
+    <div class="p-6">
+      {% for message in messages %}
+        <div class="p-4 bg-teal-300 text-white rounded-xl">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% block content%} {% endblock %}
+
+  <footer class="py-10 flex justify-center bg-gray-200">
+    <span>Todos os direitos reservados</span>
+  </footer>
+</body>
+
+</html>

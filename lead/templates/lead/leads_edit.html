@@ -1,0 +1,15 @@
+{% extends 'core/base.html '%}
+
+{%block title %} Editar Lead {%endblock%}
+
+{%block content%}
+<h1 class="text-xl">Editar Lead</h1>
+
+<form method="post" action=".">
+  {% csrf_token %}
+
+  {{ form.as_p }}
+
+  <button class="py-2 px-4 bg-teal-500 rounded-xl text-white">Salvar alterações</button>
+</form>
+{%endblock%}
